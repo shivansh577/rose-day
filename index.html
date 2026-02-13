@@ -3,168 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Rose Day Rasmalai 😚🌹</title>
+<title>Forever With You and only yours 💘</title>
 
 <style>
 body {
   margin: 0;
   height: 100vh;
   overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  font-family: 'Segoe UI', sans-serif;
+  color: white;
 }
 
-/* Card */
-.card {
+/* STARS */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
   background: white;
-  padding: 26px;
-  border-radius: 24px;
+  animation: twinkle 2s infinite alternate;
+}
+@keyframes twinkle {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* SHOOTING STAR */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(white, transparent);
+  transform: rotate(45deg);
+  animation: shoot 2s linear forwards;
+}
+@keyframes shoot {
+  from { transform: translateX(-200px) translateY(-200px) rotate(45deg); opacity: 1; }
+  to { transform: translateX(800px) translateY(800px) rotate(45deg); opacity: 0; }
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 20px;
   text-align: center;
   width: 90%;
-  max-width: 360px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  max-width: 380px;
+  box-shadow: 0 0 30px rgba(255,105,180,0.5);
   z-index: 2;
-  animation: pop 1s ease;
-}
-@keyframes pop {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
 }
 
-/* Glowing name */
 .glow {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
-  color: #e63946;
-  animation: glow 2s ease-in-out infinite alternate;
+  color: #ff4d6d;
+  animation: glow 2s infinite alternate;
 }
 @keyframes glow {
-  from {
-    text-shadow: 0 0 5px #ff4d6d, 0 0 10px #ff4d6d;
-  }
-  to {
-    text-shadow: 0 0 15px #ff758f, 0 0 30px #ff758f;
-  }
+  from { text-shadow: 0 0 5px #ff4d6d; }
+  to { text-shadow: 0 0 25px #ff4d6d; }
 }
 
-h1 { color: #e63946; }
-p { color: #444; line-height: 1.6; }
-
-.rose {
-  font-size: 52px;
+img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
 }
 
-.emoji {
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.yes { background: #ff4d6d; color: white; }
+.no { background: #ccc; color: black; }
+
+/* FOREVER SCREEN */
+#foreverScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  z-index: 10;
+}
+
+.bigHeart {
+  font-size: 70px;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* RING DROP */
+.ring {
+  font-size: 80px;
+  position: absolute;
+  top: -100px;
+  animation: drop 2s ease forwards;
+}
+@keyframes drop {
+  to { top: 40%; }
+}
+
+/* TYPING TEXT */
+#typing {
   font-size: 22px;
-  margin-top: 10px;
+  margin-top: 20px;
+  min-height: 30px;
 }
 
-footer {
-  margin-top: 14px;
-  font-size: 14px;
-  color: #777;
-}
-
-/* Floating hearts */
-.heart {
+/* CONFETTI */
+.confetti {
   position: absolute;
-  font-size: 20px;
-  animation: floatUp linear infinite;
-}
-@keyframes floatUp {
-  from { transform: translateY(100vh); opacity: 1; }
-  to { transform: translateY(-10vh); opacity: 0; }
-}
-
-/* Falling roses */
-.rose-fall {
-  position: absolute;
-  font-size: 26px;
-  animation: fall linear infinite;
+  width: 8px;
+  height: 8px;
+  animation: fall 3s linear forwards;
 }
 @keyframes fall {
-  from { transform: translateY(-10vh); opacity: 1; }
-  to { transform: translateY(100vh); opacity: 0; }
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
 }
 
-/* Tap hint */
-.tap {
-  font-size: 12px;
-  color: #999;
-  margin-top: 6px;
+/* HEART BURST */
+.heart-burst {
+  position: absolute;
+  font-size: 40px;
+  animation: burst 1s ease-out forwards;
+}
+@keyframes burst {
+  from { transform: scale(0); opacity: 1; }
+  to { transform: scale(2) translateY(-50px); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Bollywood-style romantic instrumental (safe & works) -->
 <audio id="bgm" loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card" onclick="playMusic()">
-  <div class="rose">🌹</div>
-  <h1>Happy Rose Day</h1>
+  <img src="love.jpeg" alt="Our Photo">
+  <h2>Hey <span class="glow"> bebuu humar rasmalai 😚</span></h2>
+  <p>no matter our distance baby i an always youys forever yours and always with you my rasmalai😚💖</p>
+  <h3>Will you be my Valentine, bebuuu?😚😚😚💖</h3>
 
-  <p class="glow">Bebuuuuuuu 😚</p>
+  <button class="yes" onclick="sayYes()">Yes 😚💖</button>
+  <button class="no" onmouseover="moveNo()">No 🙈</button>
+</div>
 
-  <p>
-    No matter how far you are,<br>
-    my heart always chooses you ❤️<br>
-    I love you my jaanu aaro humra aaha humesha <br>
-    hasit smile karit ee achha lagi xi my darling😘❤️
-  </p>
-
-  <p>
-    You are my Rasmalai, my forever rose 🌹
-  </p>
-
-  <div class="emoji">
-    😚😚🥰❤😚😚😘😘😘😘
-  </div>
-
-  <footer>
-    Forever yours,<br>
-    Jamun 💕
-  </footer>
+<div id="foreverScreen">
+  <div class="bigHeart">💖</div>
+  <div class="ring">💍</div>
+  <h1>Forever? 😚</h1>
+  <div id="typing"></div>
 </div>
 
 <script>
 const music = document.getElementById("bgm");
 
 function playMusic() {
-  if (music.paused) {
-    music.play();
+  music.play();
+}
+
+function moveNo() {
+  const btn = document.querySelector(".no");
+  btn.style.position = "absolute";
+  btn.style.left = Math.random() * 80 + "%";
+  btn.style.top = Math.random() * 80 + "%";
+}
+
+function sayYes() {
+  createConfetti();
+  createHeartBurst();
+
+  setTimeout(() => {
+    document.getElementById("foreverScreen").style.display = "flex";
+    startTyping();
+  }, 2000);
+}
+
+/* Typing effect */
+const text = "Not just today baby not just tomorrow I Love you humar jaanu humar bebuu forever and ever and ever baby humar jaanu 😚💖😚💖";
+let i = 0;
+function startTyping() {
+  const typing = document.getElementById("typing");
+  const interval = setInterval(() => {
+    typing.innerHTML += text[i];
+    i++;
+    if (i >= text.length) clearInterval(interval);
+  }, 50);
+}
+
+/* Stars */
+for (let i = 0; i < 150; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "vw";
+  star.style.top = Math.random() * 100 + "vh";
+  document.body.appendChild(star);
+}
+
+/* Shooting star every 6 seconds */
+setInterval(() => {
+  const s = document.createElement("div");
+  s.className = "shooting-star";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 50 + "vh";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 2000);
+}, 6000);
+
+/* Confetti */
+function createConfetti() {
+  for (let i = 0; i < 60; i++) {
+    const conf = document.createElement("div");
+    conf.className = "confetti";
+    conf.style.left = Math.random() * 100 + "vw";
+    conf.style.background = ["#ff4d6d","#ffd166","#06d6a0","#118ab2"][Math.floor(Math.random()*4)];
+    document.body.appendChild(conf);
+    setTimeout(() => conf.remove(), 3000);
   }
 }
 
-// Hearts
-function createHeart() {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "💖";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.animationDuration = (4 + Math.random() * 3) + "s";
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 7000);
+/* Heart Burst */
+function createHeartBurst() {
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart-burst";
+    heart.innerHTML = "💖";
+    heart.style.left = 45 + Math.random()*10 + "vw";
+    heart.style.top = 45 + Math.random()*10 + "vh";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1000);
+  }
 }
-setInterval(createHeart, 500);
-
-// Roses
-function createRose() {
-  const r = document.createElement("div");
-  r.className = "rose-fall";
-  r.innerHTML = "🌹";
-  r.style.left = Math.random() * 100 + "vw";
-  r.style.animationDuration = (6 + Math.random() * 4) + "s";
-  document.body.appendChild(r);
-  setTimeout(() => r.remove(), 9000);
-}
-setInterval(createRose, 800);
 </script>
 
 </body>
